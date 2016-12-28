@@ -18,19 +18,19 @@ def turnOff(uid):
 	lib.tdTurnOff(uid)
 
 #function to be called when a device event occurs
-def callbackfunction(self, deviceId, method, value, callbackId, context):
+def callbackfunction(deviceId, method, value, callbackId, context):
 	print("callback! " + str(deviceId))
 
 #function to be called when device event occurs, even for unregistered devices
-def rawcallbackfunction(self, data, controllerId, callbackId, context):
+def rawcallbackfunction(data, controllerId, callbackId, context):
 	print("rawcallbackfunction(data: " + str(data) + ", controllerId: " + str(controllerId) + ")")
 	print(string_at(data))
 
 CMPFUNC = CFUNCTYPE(None, c_int, c_int, POINTER(c_ubyte), c_int, c_void_p)
 CMPFUNCRAW = CFUNCTYPE(None, POINTER(c_ubyte), c_int, c_int, c_void_p)
 
-cmp_func = CMPFUNC(server.callbackfunction)
-cmp_funcraw = CMPFUNCRAW(server.rawcallbackfunction)
+cmp_func = CMPFUNC(callbackfunction)
+cmp_funcraw = CMPFUNCRAW(rawcallbackfunction)
 
 lib.tdInit()
 lib.tdRegisterDeviceEvent(cmp_func, 0)
@@ -55,10 +55,8 @@ try:
 			for key in receivedObject:
 				if(key == "msg"):
 					print("Message: %s" % receivedObject[key])
-				elif(event == "turnOn"):
+				elif(key == "event"):
 					turnOn(100)
-				elif(event == "turnOff"):
-					turnOff(100)
 				else:
 					print("UNKNOWN: %s: %s" % (key, receivedObject[key]))
 			conn.send(data) # echo
