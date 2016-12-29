@@ -56,10 +56,10 @@ try:
 				if(key == "msg"):
 					print("Message: %s" % receivedObject[key])
 				elif(key == "event"):
-					if(receivedObject[key][state] == "on"):
-						turnOn(receivedObject[key][uid])
-					elif(receivedObject[key][state] == "off"):
-						turnOff(receivedObject[key][uid])
+					if(receivedObject[key]["state"] == "on"):
+						turnOn(receivedObject[key]["uid"])
+					elif(receivedObject[key]["state"] == "off"):
+						turnOff(receivedObject[key]["uid"])
 				else:
 					print("UNKNOWN: %s: %s" % (key, receivedObject[key]))
 			conn.send(data) # echo
