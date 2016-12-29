@@ -10,11 +10,11 @@ print "***************"
 lib = cdll.LoadLibrary('libtelldus-core.so.2') #import our library
 
 def turnOn(uid):
-	print("turnOn: " + uid)
+	print("turnOn: " + str(uid))
 	lib.tdTurnOn(uid)
 
 def turnOff(uid):
-	print("turnOff: " + uid)
+	print("turnOff: " + str(uid))
 	lib.tdTurnOff(uid)
 
 #function to be called when a device event occurs
@@ -56,7 +56,10 @@ try:
 				if(key == "msg"):
 					print("Message: %s" % receivedObject[key])
 				elif(key == "event"):
-					turnOn(100)
+					if(receivedObject[key][state] == "on"):
+						turnOn(receivedObject[key][uid])
+					elif(receivedObject[key][state] == "off"):
+						turnOff(receivedObject[key][uid])
 				else:
 					print("UNKNOWN: %s: %s" % (key, receivedObject[key]))
 			conn.send(data) # echo
