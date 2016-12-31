@@ -8,7 +8,7 @@ print "* Serverstart *"
 print "***************"
 
 lib = cdll.LoadLibrary('libtelldus-core.so.2') #import our library
-states= []
+states= {}
 
 def turnOn(uid):
 	print("turnOn: " + str(uid))
