@@ -8,13 +8,16 @@ print "* Serverstart *"
 print "***************"
 
 lib = cdll.LoadLibrary('libtelldus-core.so.2') #import our library
+states= []
 
 def turnOn(uid):
 	print("turnOn: " + str(uid))
+	states[uid]= True
 	lib.tdTurnOn(uid)
 
 def turnOff(uid):
 	print("turnOff: " + str(uid))
+	states[uid]= False
 	lib.tdTurnOff(uid)
 
 #function to be called when a device event occurs
@@ -25,40 +28,38 @@ def callbackfunction(deviceId, method, value, callbackId, context):
 	if (deviceId == 199):
 		if (method == 1):
 			try:
-				if (self.states[102]):#Pixarlamp
+				if (states[102]):#Pixarlamp
 					print "if 1"
 					#self.turnOn(taklampa)
 			except Exception, e:
 				print "Exception(on)1: ", e
 			try:
-				if (self.states[100] and self.states[101]):
+				if (states[100] and states[101]):
 					print "if 2"
-					self.turnOn(102)
+					turnOn(102)
 			except Exception, e:
 				print "Exception(on)2: ", e
-			self.turnOn(100)
-			self.turnOn(101)
+			turnOn(100)
+			turnOn(101)
 		elif (method == 2):
 			try:
-				if (not self.states[102]):
+				if (not states[102]):
 					print "if 11"
-					self.turnOff(100)
-					self.turnOff(101)
+					turnOff(100)
+					turnOff(101)
 			except Exception, e:
 				print "Exception(off): ", e
 				pass
-			self.turnOff(102)
-		self.output.updateStates(self.states)
+			turnOff(102)
 		return
 
 	#Bedroom Remote Controll
 	#Button 1
 	if (deviceId == 499):
 		if (method == 1):
-			self.turnOn(200)
+			turnOn(200)
 		elif (method == 2):
-			self.turnOff(200)
-		self.output.updateStates(self.states)
+			turnOff(200)
 		return
 	#Button 2
 	if (deviceId == 498):
@@ -66,15 +67,13 @@ def callbackfunction(deviceId, method, value, callbackId, context):
 			pass
 		elif (method == 2):
 			pass
-		self.output.updateStates(self.states)
 		return
 	#Button 3
 	if (deviceId == 497):
 		if (method == 1):
-			self.turnOn(400)
+			turnOn(400)
 		elif (method == 2):
-			self.turnOff(400)
-		self.output.updateStates(self.states)
+			turnOff(400)
 		return
 
 #function to be called when device event occurs, even for unregistered devices
