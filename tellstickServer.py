@@ -19,7 +19,63 @@ def turnOff(uid):
 
 #function to be called when a device event occurs
 def callbackfunction(deviceId, method, value, callbackId, context):
-	print("callback! " + str(deviceId))
+	print("callback! " + str(deviceId) + ": " + str(method))
+
+	#LivingRoom_Switch
+	if (deviceId == 199):
+		if (method == 1):
+			try:
+				if (self.states[102]):#Pixarlamp
+					print "if 1"
+					#self.turnOn(taklampa)
+			except Exception, e:
+				print "Exception(on)1: ", e
+			try:
+				if (self.states[100] and self.states[101]):
+					print "if 2"
+					self.turnOn(102)
+			except Exception, e:
+				print "Exception(on)2: ", e
+			self.turnOn(100)
+			self.turnOn(101)
+		elif (method == 2):
+			try:
+				if (not self.states[102]):
+					print "if 11"
+					self.turnOff(100)
+					self.turnOff(101)
+			except Exception, e:
+				print "Exception(off): ", e
+				pass
+			self.turnOff(102)
+		self.output.updateStates(self.states)
+		return
+
+	#Bedroom Remote Controll
+	#Button 1
+	if (deviceId == 499):
+		if (method == 1):
+			self.turnOn(200)
+		elif (method == 2):
+			self.turnOff(200)
+		self.output.updateStates(self.states)
+		return
+	#Button 2
+	if (deviceId == 498):
+		if (method == 1):
+			pass
+		elif (method == 2):
+			pass
+		self.output.updateStates(self.states)
+		return
+	#Button 3
+	if (deviceId == 497):
+		if (method == 1):
+			self.turnOn(400)
+		elif (method == 2):
+			self.turnOff(400)
+		self.output.updateStates(self.states)
+		return
 
 #function to be called when device event occurs, even for unregistered devices
 def rawcallbackfunction(data, controllerId, callbackId, context):
