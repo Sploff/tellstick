@@ -53,23 +53,23 @@ def callbackfunction(deviceId, method, value, callbackId, context):
 			turnOff(102)
 		return
 
-	#Bedroom Remote Controll
+	#Hall and bedroom Remote Controll
 	#Button 1
-	if (deviceId == 499):
+	if (deviceId == 299 or deviceId == 499):
 		if (method == 1):
 			turnOn(200)
 		elif (method == 2):
 			turnOff(200)
 		return
 	#Button 2
-	if (deviceId == 498):
+	if (deviceId == 4982or deviceId == 498):
 		if (method == 1):
 			pass
 		elif (method == 2):
 			pass
 		return
 	#Button 3
-	if (deviceId == 497):
+	if (deviceId == 297 or deviceId == 497):
 		if (method == 1):
 			turnOn(400)
 		elif (method == 2):
