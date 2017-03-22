@@ -62,7 +62,7 @@ def callbackfunction(deviceId, method, value, callbackId, context):
 			turnOff(200)
 		return
 	#Button 2
-	if (deviceId == 4982or deviceId == 498):
+	if (deviceId == 298 or deviceId == 498):
 		if (method == 1):
 			pass
 		elif (method == 2):

@@ -1,0 +1,34 @@
+1xx Vardagsrum
+2xx Hall
+3xx Kontor
+4xx Sovrum
+5xx Kök
+
+00-49: Mottagare
+50-99: Sändare
+
+-----------------------------
+
+Vardagsrummet
+100 Fönsterlampa (Soffa)
+101 Fönsterlampa (Matbord)
+102 Golvlampa (Soffa)
+199 Strömbrytare (Vägg)
+
+Hallen
+200 Kabellampa
+297 Sovrumsfjärrkontroll knapp 3
+298 Sovrumsfjärrkontroll knapp 2
+299 Sovrumsfjärrkontroll knapp 1
+
+Kontoret
+300 Skrivbordslampa
+
+Sovrummet
+400 Fönsterlamporna
+497 Sovrumsfjärrkontroll knapp 3
+498 Sovrumsfjärrkontroll knapp 2
+499 Sovrumsfjärrkontroll knapp 1
+
+Köket
+500 Kabellampa
