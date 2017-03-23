@@ -11,7 +11,7 @@ nodeEvents= []
 nodeEvents.append([[1,1,1,1,1,1,1],[19,0],[200],"on"])
 nodeEvents.append([[1,1,1,1,1,1,1],[19,30],[100,101],"on"])
 nodeEvents.append([[1,1,1,1,0,0,1],[22,0],[200],"off"])
-nodeEvents.append([[1,1,1,1,1,0,0],[23,0],[102],"off"])
+nodeEvents.append([[1,1,1,1,1,1,1],[23,0],[102],"off"])
 nodeEvents.append([[1,1,1,1,0,0,1],[23,30],[100,101],"off"])
 nodeEvents.append([[0,0,0,0,1,1,0],[23,59],[200],"off"])
 nodeEvents.append([[0,0,0,0,0,1,1],[01,00],[100,101],"off"])
@@ -33,8 +33,9 @@ def sendEvent(event):
 
 #x= 0
 while 1:
+    print("===== %s =====" % frUr.now())
     for event in nodeEvents:
-        print(frUr.now())
+        #print(frUr.now())
         #print event[3]
         #print frUr.now().hour
         if (event[0][frUr.today().weekday()] and
