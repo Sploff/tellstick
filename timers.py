@@ -8,8 +8,8 @@ BUFFER_SIZE= 1024
 
 frUr= datetime.datetime
 nodeEvents= []
-nodeEvents.append([[1,1,1,1,1,1,1],[19,0],[200],"on"])
-nodeEvents.append([[1,1,1,1,1,1,1],[19,30],[100,101],"on"])
+nodeEvents.append([[1,1,1,1,1,1,1],[18,0],[200],"on"])
+nodeEvents.append([[1,1,1,1,1,1,1],[18,30],[100,101],"on"])
 nodeEvents.append([[1,1,1,1,0,0,1],[22,0],[200],"off"])
 nodeEvents.append([[1,1,1,1,1,1,1],[23,0],[102],"off"])
 nodeEvents.append([[1,1,1,1,0,0,1],[23,30],[100,101],"off"])
